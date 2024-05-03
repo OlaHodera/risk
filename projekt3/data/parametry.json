@@ -11,13 +11,15 @@
   "oil": {
     "file path": "",
     "ticker": "CL=F",
-    "name": "ropa"
+    "name": "ropa",
+    "okno": 250
   },
 
   "cny": {
     "file path": "",
     "ticker": "USDCNY=X",
-    "name": "USD/CNY"
+    "name": "USD/CNY",
+    "okno": 125
   }
 
 }
