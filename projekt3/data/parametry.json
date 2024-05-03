@@ -1,0 +1,23 @@
+{
+  "variable": "cny",
+
+  "all": {
+    "start": "2021-03-01",
+    "end": "2024-05-01",
+    "test": "2024-03-01",
+    "lambda": 0.95
+    },
+
+  "oil": {
+    "file path": "",
+    "ticker": "CL=F",
+    "name": "ropa"
+  },
+
+  "cny": {
+    "file path": "",
+    "ticker": "USDCNY=X",
+    "name": "USD/CNY"
+  }
+
+}
