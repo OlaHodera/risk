@@ -12,7 +12,7 @@ alpha = params['alpha']
 
 def weighted_var(losses):
     w1 = 1 / np.sum(lam ** np.arange(len(losses)))
-    weights = w1 * lam ** np.arange(len(losses))
+    weights = w1 * lam ** np.arange(len(losses))[::-1]
     df = pd.DataFrame({'losses': losses, 'weights': weights}).reset_index(drop=True)
     df = df.sort_values(by='losses', ascending=True, ignore_index=True)
     df.weights = df.weights.cumsum()

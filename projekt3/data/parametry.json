@@ -10,14 +10,14 @@
     },
 
   "oil": {
-    "file path": "",
+    "file path": "data\\ropa.csv",
     "ticker": "CL=F",
     "name": "ropa",
     "okno": 250
   },
 
   "cny": {
-    "file path": "",
+    "file path": "data\\cny.csv",
     "ticker": "USDCNY=X",
     "name": "cny",
     "okno": 125
