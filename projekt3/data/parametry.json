@@ -5,7 +5,8 @@
     "start": "2021-03-01",
     "end": "2024-05-01",
     "test": "2024-03-01",
-    "lambda": 0.95
+    "lambda": 0.95,
+    "alpha": 0.95
     },
 
   "oil": {
@@ -18,7 +19,7 @@
   "cny": {
     "file path": "",
     "ticker": "USDCNY=X",
-    "name": "USD/CNY",
+    "name": "cny",
     "okno": 125
   }
 
