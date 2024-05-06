@@ -8,10 +8,9 @@ from projekt3.utils.download import parse_json
 
 params = parse_json()
 lam = params['lambda']
-alpha = params['alpha']
 
 
-def weighted_var(losses, statistic='quantile'):
+def weighted_var(losses, alpha, statistic='quantile'):
     w1 = 1 / np.sum(lam ** np.arange(len(losses)))
     weights = w1 * lam ** np.arange(len(losses))[::-1]
     if statistic == 'expectile':
@@ -23,7 +22,7 @@ def weighted_var(losses, statistic='quantile'):
         return df.loc[df.weights.searchsorted(alpha)-1, 'losses']
 
 
-def garch_var(losses, statistic='quantile'):
+def garch_var(losses, alpha, statistic='quantile'):
     losses = losses.dropna() * 100
     model = arch_model(losses, vol="GARCH", p=1, q=1, dist="t", mean='constant')
     res = model.fit()
