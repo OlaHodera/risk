@@ -6,7 +6,7 @@ import scipy.stats as stats
 
 
 def kupiec(exceeds_vector, var_level=.95, alpha=.05):
-    p, x, N = 1 - var_level, len(exceeds_vector) - exceeds_vector.sum(), len(exceeds_vector)
+    p, x, N = 1 - var_level, exceeds_vector.sum(), len(exceeds_vector)
     numerator = (1 - p) ** (N - x) * p ** x
     denominator = (1 - x / N) ** (N - x) * (x / N) ** x
     LR = -2 * np.log(numerator / denominator)

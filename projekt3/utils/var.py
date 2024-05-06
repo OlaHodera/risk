@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
-from tests import kupiec
+from projekt3.utils.tests import kupiec
 
 from projekt3.utils.download import parse_json
 
@@ -31,7 +31,7 @@ def test_exceeds_vector(vector, alpha=.95):
                                         vector.var(),
                                         stats.binomtest(int(vector.sum()), n=vector.size, p=1-alpha).pvalue,
                                         kupiec(vector, alpha)],
-                         'teoretyczne': [alpha,
+                         'teoretyczne': [1 - alpha,
                                          alpha*(1-alpha),
                                          np.nan,
                                          np.nan]},
