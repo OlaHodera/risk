@@ -26,6 +26,6 @@ def garch_var(losses):
     forecasts = res.forecast(horizon=1)
     variance = forecasts.variance.values[0, 0]
     mean = forecasts.mean.values[0, 0]
-    residuals = (res.resid - mean) / res.conditional_volatility
+    residuals = (res.resid - res.params['mu']) / res.conditional_volatility
     q = residuals.quantile(alpha)
     return (mean + np.sqrt(variance) * q) / 100

@@ -5,7 +5,8 @@ from projekt3.utils.download import parse_json
 params = parse_json()
 lam = params['lambda']
 alpha = params['alpha']
-window = params['okno']
+window = params['window']
+small_window = window // 4
 
 
 def calculate_var(df, method, name):
@@ -17,6 +18,6 @@ def calculate_var(df, method, name):
 def exceeds_vector(df, name):
     df[f'exceeds_{name}'] = np.where(df[f'returns'] > df[f'var95_{name}'], 1, 0)
     df.loc[df[f'var95_{name}'].isna(), f'exceeds_{name}'] = np.nan
-    df[f'procent_przekroczeń_{name}'] = df[f'exceeds_{name}'].rolling(window=50).sum() / 50
-    I = df.dropna()[f'exceeds_{name}']  # wektor przekroczeń
+    df[f'procent_przekroczeń_{name}'] = df[f'exceeds_{name}'].rolling(window=small_window).sum() / small_window
+    I = df[f'exceeds_{name}'].dropna()  # wektor przekroczeń
     return df, I

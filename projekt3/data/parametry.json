@@ -1,26 +1,33 @@
 {
   "variable": "cny",
 
+  "frequencies": {
+    "monthly": "ME",
+    "weekly": "W",
+    "daily": "D"
+  },
+
   "all": {
-    "start": "2021-03-01",
+    "start": "2005-03-01",
     "end": "2024-05-01",
     "test": "2024-03-01",
     "lambda": 0.95,
-    "alpha": 0.95
+    "alpha": 0.95,
+    "frequency": "ME"
     },
 
   "oil": {
     "file path": "data\\ropa.csv",
     "ticker": "CL=F",
     "name": "ropa",
-    "okno": 250
+    "window": 12
   },
 
   "cny": {
     "file path": "data\\cny.csv",
     "ticker": "USDCNY=X",
     "name": "cny",
-    "okno": 125
+    "window": 12
   }
 
 }
