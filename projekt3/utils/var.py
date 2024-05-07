@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
-from projekt3.utils.tests import kupiec
+from projekt3.utils.tests import kupiec, christoffersen
 
 from projekt3.utils.download import parse_json
 
@@ -30,9 +30,14 @@ def test_exceeds_vector(vector, alpha=.95):
     return pd.DataFrame({'empiryczne': [vector.mean(),
                                         vector.var(),
                                         stats.binomtest(int(vector.sum()), n=vector.size, p=1-alpha).pvalue,
-                                        kupiec(vector, alpha)],
+                                        kupiec(vector, alpha),
+                                        christoffersen(vector)],
                          'teoretyczne': [1 - alpha,
                                          alpha*(1-alpha),
-                                         np.nan,
-                                         np.nan]},
-                        index=['średnia', 'wariancja', 'binomtest p-wartość', 'Kupiec - p-wartość'])
+                                         '-',
+                                         '-',
+                                         '-']},
+                        index=['średnia', 'wariancja',
+                               'binomtest p-wartość',
+                               'Kupiec - p-wartość',
+                               'christoffersen p-wartość'])
