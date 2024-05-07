@@ -35,4 +35,4 @@ def test_exceeds_vector(vector, alpha=.95):
                                          alpha*(1-alpha),
                                          np.nan,
                                          np.nan]},
-                        index=['średnia', 'wariancja', 'binomtest p-wartość', 'Kupiec - wynik'])
+                        index=['średnia', 'wariancja', 'binomtest p-wartość', 'Kupiec - p-wartość'])

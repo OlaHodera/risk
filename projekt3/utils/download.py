@@ -1,5 +1,4 @@
 import json
-import datetime
 import pandas as pd
 import yfinance as yf
 
@@ -8,7 +7,6 @@ def parse_json():
     with open("data\\parametry.json") as file:
         params = json.load(file)
     params = {**params['all'], **params[params['variable']]}
-    params['test'] = datetime.datetime.strptime(params['test'], '%Y-%m-%d')
     return params
 
 

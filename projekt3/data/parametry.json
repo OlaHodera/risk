@@ -8,11 +8,10 @@
   },
 
   "all": {
-    "start": "2005-03-01",
+    "start": "2022-03-01",
     "end": "2024-05-01",
-    "test": "2024-03-01",
     "lambda": 0.95,
-    "frequency": "ME"
+    "frequency": "D"
     },
 
   "oil": {
@@ -26,7 +25,7 @@
     "file path": "data\\cny.csv",
     "ticker": "USDCNY=X",
     "name": "cny",
-    "window": 12
+    "window": 250
   }
 
 }

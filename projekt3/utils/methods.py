@@ -29,10 +29,10 @@ def garch_var(losses, alpha, statistic='quantile'):
     forecasts = res.forecast(horizon=1)
     variance = forecasts.variance.values[0, 0]
     mean = forecasts.mean.values[0, 0]
-    residuals = (res.resid - res.params['mu']) / res.conditional_volatility
+    scaled_losses = (losses - mean) / np.sqrt(res.conditional_volatility)
     if statistic == 'quantile':
-        q = residuals.quantile(alpha)
-        return (mean + np.sqrt(variance) * q) / 100
+        q = scaled_losses.quantile(alpha)
+        return (mean + (np.sqrt(variance)) * q) / 100
     elif statistic == 'expectile':
-        q = stats.expectile(residuals, alpha)
+        q = stats.expectile(scaled_losses, alpha)
         return (mean + np.sqrt(variance) * q) / 100
