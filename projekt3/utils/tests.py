@@ -33,5 +33,5 @@ def scoring_expectile(returns, evars, alpha=.95):
 
 def scoring_quantile(returns, var, alpha=.95):
     zeros = np.zeros(len(returns))
-    S = alpha * np.max(returns - var, 0) + (1 - alpha) * np.max(var - returns, 0)
+    S = alpha * np.maximum(returns - var, zeros) + (1 - alpha) * np.maximum(var - returns, zeros)
     return S[~np.isnan(S)]
