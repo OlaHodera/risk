@@ -12,7 +12,7 @@ small_window = window // 4
 
 
 def calculate_var(df, method, name, alpha=95):
-    df[f'var{alpha}_{name}'] = df.returns.rolling(window=window).agg(lambda x: method(x, alpha/100))
+    df[f'var{alpha}_{name}'] = df.returns.rolling(window=window).agg(method)
     df[f'VaR{alpha}_{name}'] = df[f'var{alpha}_{name}'] * df.Close.shift(-1) + df.Close.shift(-1)
     return df
 
