@@ -2,9 +2,6 @@ import numpy as np
 import scipy.stats as stats
 
 
-# https://www.mathworks.com/help/risk/overview-of-var-backtesting.html
-
-
 def kupiec(exceeds_vector, var_level=.95):
     p, x, N = 1 - var_level, exceeds_vector.sum(), len(exceeds_vector)
     numerator = (1 - p) ** (N - x) * p ** x
@@ -25,3 +22,16 @@ def christoffersen(exceedance):
     general = (1 - pi_01) ** i_00 * pi_01 ** i_01 * (1 - pi_11) ** i_10 * pi_11 ** i_11
     LR = -2 * np.log(nested / general)
     return 1 - stats.chi2.cdf(LR, df=1)
+
+
+def scoring_expectile(returns, evars, alpha=.95):
+    zeros = np.zeros(len(returns))
+    S = alpha * np.maximum(returns - evars, zeros) ** 2\
+        + (1 - alpha) * np.maximum(evars - returns, zeros) ** 2
+    return S[~np.isnan(S)]
+
+
+def scoring_quantile(returns, var, alpha=.95):
+    zeros = np.zeros(len(returns))
+    S = alpha * np.max(returns - var, 0) + (1 - alpha) * np.max(var - returns, 0)
+    return S[~np.isnan(S)]
