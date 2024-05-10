@@ -1,5 +1,5 @@
 {
-  "variable": "cny",
+  "variable": "oil",
 
   "frequencies": {
     "monthly": "ME",
@@ -18,14 +18,14 @@
     "file path": "data\\ropa.csv",
     "ticker": "CL=F",
     "name": "ropa",
-    "window": 250
+    "window": 365
   },
 
   "cny": {
     "file path": "data\\cny.csv",
     "ticker": "USDCNY=X",
     "name": "cny",
-    "window": 250
+    "window": 365
   }
 
 }

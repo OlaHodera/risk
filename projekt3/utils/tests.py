@@ -13,7 +13,7 @@ def kupiec(exceeds_vector, var_level=.95):
 def christoffersen(exceedance):
     pairs = list(zip(exceedance, exceedance[1:]))
     n = len(exceedance)
-    i_0, i_1 = n - exceedance.sum(), exceedance.sum()
+    i_0, i_1 = n - exceedance[1: -1].sum() - 2, exceedance[1: -1].sum()
     i_00, i_01, i_10, i_11 = pairs.count((0, 0)), pairs.count((0, 1)), pairs.count((1, 0)), pairs.count((1, 1))
     pi_01 = i_01 / (i_00 + i_01)
     pi_11 = i_11 / (i_10 + i_11)
