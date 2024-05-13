@@ -3,7 +3,7 @@ import pandas as pd
 from arch import arch_model
 import scipy.stats as stats
 
-from projekt3.utils.download import parse_json
+from utils.download import parse_json
 
 
 params = parse_json()

@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
-from projekt3.utils.tests import kupiec, christoffersen
+from utils.tests import kupiec, christoffersen
 
-from projekt3.utils.download import parse_json
+from utils.download import parse_json
 
 params = parse_json()
 lam = params['lambda']
