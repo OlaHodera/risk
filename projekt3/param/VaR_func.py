@@ -1,11 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import scipy as sp
 import scipy.stats as st
-import statsmodels.api as sm
 import numpy as np
-import matplotlib.animation as animation
+import scipy.optimize as op
+
 
 def add_VaR(df, distr):
 
@@ -27,6 +25,15 @@ def add_VaR(df, distr):
     
     return(df)
 
+def u(x, d):
+    mu = d.stats('m')
+    q = d.ppf(x)
+    G = d.expect(lb=-x, ub=q)
+    return( (-x * q + G) / (-mu + 2*G + (1-2*x) * q))
+
+def u_test(x, d, alpha):
+    return(u(x, d) - alpha)
+
 def add_EVaR(df, distr):
 
     dist_type = getattr(st, distr)
@@ -38,8 +45,10 @@ def add_EVaR(df, distr):
         d = dist_type(*p)
         V95=( d.ppf(.95) )
         V99=( d.ppf(.99) )
-        EVaR_95.append( d.expect(lb=V95, conditional=True) )
-        EVaR_99.append( d.expect(lb=V99, conditional=True) )
+        a95 = op.fsolve(u_test, 0.9, args=(d, 0.95))
+        a99 = op.fsolve(u_test, 0.9, args=(d, 0.99))
+        EVaR_95.append( d.ppf(a95) )
+        EVaR_99.append( d.ppf(a99) )
     df['EVaR_95'] = EVaR_95
     df['EVaR_99'] = EVaR_99
     
