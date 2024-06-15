@@ -22,6 +22,5 @@ def insolvency_probability(T, parameters, t=0):
                          parameters["sigma_E"]),
         x0=np.array([parameters["sigma_E"], parameters["market_cap"]]))
     sigma, v = solution[0], solution[1]
-    print(solution)
     d2 = (np.log(v / parameters["L"]) + ((parameters["r"] - parameters["k"]) - sigma ** 2 / 2) * (T - t)) / (sigma * np.sqrt(T - t))
-    return 1 - stats.norm.cdf(d2)
+    return 1 - stats.norm.cdf(d2), solution
